@@ -1,0 +1,40 @@
+// Basic Application Styles and Toolkit
+
+.clear {clear: both !important;}
+.left {float: left !important}
+.right {float: right !important}
+.center {margin: 0px auto !important; width: 50%;}
+.center_strict {margin: 0px auto !important; width: 900px !important; }
+.center_small {margin: 0px auto !important; width: 250px !important; }
+.third {width: 30% !important;}
+.half {width: 50% !important;}
+.most {width: 80% !important;}
+.full {width: 100% !important;}
+
+.hidden {display: none; }
+
+.align-left {text-align: left; }
+.align-right {text-align: right; }
+.align-center {text-align: center; }
+
+body {
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  h1 {
+    margin: 0 0 0.2em 0.3em;
+    padding: 0;
+  }
+  a, a:hover {
+    color: #77c;
+    text-decoration: none;
+  }
+  .top_bar {
+    display: inline-block;
+    width: 100%;
+    background-color: #601005;
+    color: #a9a9a9;
+  }
+}
