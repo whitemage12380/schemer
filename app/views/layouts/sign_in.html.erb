@@ -7,10 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Schemer Sign In</h1>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<div class="body_container">
+  <div class="header">
+    <div class="top_bar">
+      <h1 class="align-center">Schemer</h1>
+    </div>
+  </div>
+  <%= render "layouts/messages" %>
+  <div class="small_form_box center">
+    <%= yield %>
+  </div>
+</div>
+  
 
 </body>
 </html>
