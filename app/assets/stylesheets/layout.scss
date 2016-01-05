@@ -1,5 +1,14 @@
 // Basic Application Styles and Toolkit
 
+// Fonts
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: font-url('Ubuntu-R.ttf');
+}
+
+// Basic Styles
+
 .clear {clear: both !important;}
 .left {float: left !important}
 .right {float: right !important}
@@ -17,24 +26,75 @@
 .align-right {text-align: right; }
 .align-center {text-align: center; }
 
+// Notices and Alerts
+
+.messages {
+  text-align: center;
+}
+
+.message {
+  border: 1px solid black;
+  border-radius: 25px;
+  box-shadow: 5px 5px rgb(39, 0, 0);
+  margin: 1em auto;
+  //width: 50%;
+  padding: 0.3em;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+}
+.notice {
+  @extend .message;
+  background-color: white;
+
+}
+
+.alert {
+  @extend .message;
+  background-color: rgb(240, 185, 113);
+}
+
+// Layout Elements
+
+html {
+  background-color: #601005;
+}
+
 body {
   margin: 0;
 }
 
+.body_container {
+  background-color: #601005;
+}
+
 .header {
   width: 100%;
-  h1 {
-    margin: 0 0 0.2em 0.3em;
-    padding: 0;
-  }
   a, a:hover {
     color: #77c;
     text-decoration: none;
   }
   .top_bar {
     display: inline-block;
+    position: relative;
     width: 100%;
     background-color: #601005;
     color: #a9a9a9;
+    //height: 50px;
+    h1 { 
+      font-family : Ubuntu;
+    }
+    .account_options {
+      position: absolute;
+      right: 0;
+    }
   }
+}
+
+.main {
+  margin: 0 10px;
+  background-color: white;
+  border-radius: 25px;
+  min-height: 20em;
+  padding: 1em;
 }
