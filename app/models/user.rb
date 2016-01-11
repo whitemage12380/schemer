@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  # Associations
+  has_many :task_categories, dependent: :destroy
+
   # Check username and email for login, use whichever fits
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
