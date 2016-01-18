@@ -15,7 +15,7 @@
   box-shadow: 2px 2px rgb(100, 50, 50);
   //margin: 1em 0;
 }
-.task_category_menu_item {
+a.task_category_menu_item, a.task_category_menu_item:visited {
   float: left;
   color: #FFFCFC;
   font-family: Ubuntu;
@@ -25,10 +25,57 @@
   border-radius: 25px;
   width: 6em;
   text-align: center;
+  text-decoration: none;
 }
 
 .task_category_menu_item:hover {
   background-color: #FFFCFC !important;
   color: #203436 !important;
   //cursor: pointer;
+}
+
+// Custom Tooltip
+
+.ui-tooltip, .arrow:after {
+  background: #501010 !important;
+  border: 2px solid #FFFCFC !important;
+}
+.ui-tooltip {
+  padding: 10px 20px;
+  color: #FFFCFC !important;
+  border-radius: 20px;
+  font: 14px "Ubuntu", Sans-Serif !important;
+  box-shadow: 0 0 7px #501010;
+}
+.arrow {
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: -16px;
+}
+.arrow.top {
+  top: -16px;
+  bottom: auto;
+}
+.arrow.left {
+  left: 20%;
+}
+.arrow:after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 6px 5px 9px -9px black;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.arrow.top:after {
+  bottom: -20px;
+  top: auto;
 }
