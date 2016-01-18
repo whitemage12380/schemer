@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  category_id: 1
+  top_category_id: 1
+  parent_task_id: 1
+  name: MyString
+  description: MyString
+  is_complete: false
+  progress_percent: 1
+  due_date: 2016-01-11 14:35:36
+  expected_duration_s: 1
+  duration_s: 1
+  priority: 1
+  is_active: false
+  is_common: false
+  sort_order: 1
+
+two:
+  user_id: 1
+  category_id: 1
+  top_category_id: 1
+  parent_task_id: 1
+  name: MyString
+  description: MyString
+  is_complete: false
+  progress_percent: 1
+  due_date: 2016-01-11 14:35:36
+  expected_duration_s: 1
+  duration_s: 1
+  priority: 1
+  is_active: false
+  is_common: false
+  sort_order: 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106182857) do
+ActiveRecord::Schema.define(version: 20160111223536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,26 @@ ActiveRecord::Schema.define(version: 20160106182857) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "sort_order",         default: 100, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "top_category_id"
+    t.integer  "parent_task_id"
+    t.string   "name",                                null: false
+    t.string   "description"
+    t.boolean  "is_complete",         default: false
+    t.integer  "progress_percent",    default: 0
+    t.datetime "due_date"
+    t.integer  "expected_duration_s"
+    t.integer  "duration_s"
+    t.integer  "priority"
+    t.boolean  "is_active",           default: true,  null: false
+    t.boolean  "is_common",           default: false, null: false
+    t.integer  "sort_order",          default: 100
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +68,10 @@ ActiveRecord::Schema.define(version: 20160106182857) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "task_categories", "task_categories", column: "parent_category_id"
+  add_foreign_key "task_categories", "users"
+  add_foreign_key "tasks", "task_categories", column: "category_id"
+  add_foreign_key "tasks", "task_categories", column: "top_category_id"
+  add_foreign_key "tasks", "tasks", column: "parent_task_id"
+  add_foreign_key "tasks", "users"
 end

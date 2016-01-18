@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :task_categories
   devise_for :users
   root 'dashboard#index'

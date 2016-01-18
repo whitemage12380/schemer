@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>Top category</th>
+      <th>Parent task</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Is complete</th>
+      <th>Progress percent</th>
+      <th>Due date</th>
+      <th>Expected duration s</th>
+      <th>Duration s</th>
+      <th>Priority</th>
+      <th>Is active</th>
+      <th>Is common</th>
+      <th>Sort order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.user_id %></td>
+        <td><%= task.category_id %></td>
+        <td><%= task.top_category_id %></td>
+        <td><%= task.parent_task_id %></td>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.is_complete %></td>
+        <td><%= task.progress_percent %></td>
+        <td><%= task.due_date %></td>
+        <td><%= task.expected_duration_s %></td>
+        <td><%= task.duration_s %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.is_active %></td>
+        <td><%= task.is_common %></td>
+        <td><%= task.sort_order %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>

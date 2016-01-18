@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :task_categories, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   # Check username and email for login, use whichever fits
   def self.find_for_database_authentication(warden_conditions)

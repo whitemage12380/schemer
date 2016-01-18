@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @task.category_id %>
+</p>
+
+<p>
+  <strong>Top category:</strong>
+  <%= @task.top_category_id %>
+</p>
+
+<p>
+  <strong>Parent task:</strong>
+  <%= @task.parent_task_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Is complete:</strong>
+  <%= @task.is_complete %>
+</p>
+
+<p>
+  <strong>Progress percent:</strong>
+  <%= @task.progress_percent %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @task.due_date %>
+</p>
+
+<p>
+  <strong>Expected duration s:</strong>
+  <%= @task.expected_duration_s %>
+</p>
+
+<p>
+  <strong>Duration s:</strong>
+  <%= @task.duration_s %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @task.priority %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @task.is_active %>
+</p>
+
+<p>
+  <strong>Is common:</strong>
+  <%= @task.is_common %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @task.sort_order %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
