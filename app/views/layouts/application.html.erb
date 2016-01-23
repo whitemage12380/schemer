@@ -11,6 +11,9 @@
   <%= render "layouts/header" %>
   <%= render "layouts/messages" %>
   <div class="main">
+    <div class="task_category_menu">
+      <%= render "task_categories/menu" %>
+    </div>
     <%= yield %>
   </div>
 </div>
