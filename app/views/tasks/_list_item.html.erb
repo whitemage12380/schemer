@@ -1,6 +1,9 @@
 <div class="list_item">
-    <div class="list_item_tag" style="background-color: <%= list_item.task_category.color %>;">|||</div>
-    <div class="list_item_name"><%= list_item.name %></div>
-    <div class="list_item_menu">menu</div>
+  <div class="list_item_tag" style="background-color: <%= list_item.task_category.color %>;">|||</div>
+  <div class="list_item_name">
+    <%= list_item.name %>
+    <div class="fade_out_right"></div>
+  </div>
+  <a class="list_item_menu"><%= image_tag("expand_down.svg", size: "15x15") %></a>
 </div>
 

@@ -1,31 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @task_category.user_id %>
-</p>
-
-<p>
-  <strong>Parent category:</strong>
-  <%= @task_category.parent_category_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @task_category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task_category.description %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @task_category.color %>
-</p>
-
 <%= link_to 'Edit', edit_task_category_path(@task_category) %> |
 <%= link_to 'Back', task_categories_path %>
 
-<%= render partial: "tasks/list_item", collection: @task_category.tasks %>
+<div class="task_list">
+  <%= render partial: "tasks/new_list_item" %>
+  <%= render partial: "tasks/list_item", collection: @task_category.tasks %>
+</div>
+<div class="clear"></div>

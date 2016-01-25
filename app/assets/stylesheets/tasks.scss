@@ -2,33 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.task_list {
+  margin-left: 20%;
+  width: 60%;
+  min-width: 40em;
+}
+
 .list_item {
     float: left;
     width: 100%;
-    margin: 1em 0;
+    height: 1.7em;
+    margin: 0.2em 0;
     padding: 0.1em 0;
-    //padding: 0.2em;
     background-color: #CAF3D8;
+    box-shadow: 1px 1px rgb(100, 160, 70);
+    display: flex;
+    justify-content: space-between;
+
     .list_item_tag {
-	float: left;
-	width: 40px;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	color: #A0A0A0;
-	font-size: 8px;
-	text-align: center;
+        width: 40px;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: #A0A0A0;
+        font-size: 8px;
+        text-align: center;
     }
     .list_item_name {
-	float: left;
-	width: calc(100% - 100px);
-	margin: 0 40;
-	border-bottom: 1px solid #909090;
-	padding: 0 10px;
-	font-family: "Ubuntu";
-	font-size: 12pt;
+        flex: 1;
+        position: relative;
+        height: 1.5em;
+        padding-left: 5px;
+        font-family: "Ubuntu";
+        font-size: 12pt;
+        line-height: 1.5em;
+        overflow: hidden;
+        white-space: nowrap;
     }
     .list_item_menu {
-	float: right;
-	width: 40px;
+        width: 20px;
+        padding: 3px;
+        text-align: center;
     }
+}
+
+.new_list_item {
+  background-color: #EEEEEE;
+  border: 1px solid #808080;
+  color: #999999;
+  text-align: center;
+}
+
+.fade_out_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2em;
+    height: calc(100% - 1px);
+    background-image: linear-gradient(to right, rgba(202, 243, 216, 0), rgba(202, 243, 216, 1));
 }
