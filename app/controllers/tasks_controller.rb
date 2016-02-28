@@ -25,6 +25,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
 
     respond_to do |format|
       if @task.save
@@ -59,6 +60,17 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def task_list_item
+    @task = Task.find(params[:id].to_i)
+    render json: {
+     content: render_to_string({
+         partial: 'list_item',
+         locals: {list_item: @task},
+         layout: nil
+       })
+     }
   end
 
   private

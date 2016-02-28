@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'task_list_item/:id', to: 'tasks#task_list_item'
+
   resources :tasks
   resources :task_categories
   devise_for :users

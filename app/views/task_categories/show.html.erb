@@ -3,6 +3,8 @@
 <%= link_to 'Edit', edit_task_category_path(@task_category) %> |
 <%= link_to 'Back', task_categories_path %>
 
+<%= hidden_field :task_category, :id %>
+
 <div class="task_list">
   <%= render partial: "tasks/new_list_item" %>
   <%= render partial: "tasks/list_item", collection: @task_category.tasks %>
