@@ -1,1 +1,1 @@
-<%= link_to menu_item.name, menu_item, class: "task_category_menu_item", title: menu_item.description, style: "background-color: #{menu_item.color}" %>
+<%= link_to menu_item.name, menu_item, class: "task_category_menu_item #{is_active_category(menu_item.id.to_s)}", title: menu_item.description, style: "background-color: #{menu_item.color}" %>

@@ -26,12 +26,17 @@ a.task_category_menu_item, a.task_category_menu_item:visited {
   width: 6em;
   text-align: center;
   text-decoration: none;
+  
 }
 
 .task_category_menu_item:hover {
   background-color: #FFFCFC !important;
   color: #203436 !important;
   //cursor: pointer;
+}
+
+.task_category_menu_item.active {
+  box-shadow: 0 0 1pt 3px white;
 }
 
 // Custom Tooltip
