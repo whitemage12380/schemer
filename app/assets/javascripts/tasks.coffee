@@ -14,21 +14,40 @@ create_task = (task_name) ->
       top_category_id: task_category_id
       }},
     success: (data) ->
-      add_task_to_list(data)
+      add_task_to_list(data.id)
       return false
     error: (data) ->
       alert ("something didn't work")
       return false
 
-add_task_to_list = (task) ->
+add_task_to_list = (task_id) ->
   $.ajax
     type: "GET",
-    url: "/task_list_item/" + task.id,
+    url: "/task_list_item/" + task_id,
     dataType: "json",
     success: (data) ->
       $('.existing_list_item').first().before(data.content)
     error: (data) ->
       alert "it no worky"
+
+mark_task_completion = (completion_state, task_id, list_item_elem = null) ->
+  $.ajax
+    type: "PATCH",
+    url: "/tasks/" + task_id,
+    dataType: "json",
+    data: {
+      task: { is_complete: completion_state }
+    },
+    success: (data) ->
+      if list_item_elem != null
+        if completion_state
+          list_item_elem.addClass("completed_task")
+        else
+          list_item_elem.removeClass("completed_task")
+      return false
+    error: (data) ->
+      alert data
+      return false
 
 $ ->
   new_item_name = $(".new_item_name_overlay")
@@ -44,3 +63,8 @@ $ ->
   $("#new_item_name").keyup (e) ->
     if e.keyCode == 13
       create_task($(this).val())
+  $(".task_complete_checkbox").change ->
+    task_id = $(this).val()
+    #task_id = $(this).siblings(".task_id").first().val()
+    list_item_elem = $(this).parent(".list_item")
+    mark_task_completion($(this).is(":checked"), task_id, list_item_elem)

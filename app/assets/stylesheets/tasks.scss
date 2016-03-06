@@ -68,6 +68,12 @@
   }
 }
 
+.completed_task {
+  .list_item_name {
+    color: #999999 !important;
+  }
+}
+
 .fade_out_right {
     position: absolute;
     right: 0;

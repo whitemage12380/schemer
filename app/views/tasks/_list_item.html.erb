@@ -1,9 +1,10 @@
-<div class="list_item existing_list_item">
+<div class="list_item existing_list_item<% if list_item.is_complete %> completed_task<% end %>">
   <div class="list_item_tag" style="background-color: <%= list_item.task_category.color %>;">|||</div>
   <div class="list_item_name">
     <%= list_item.name %>
     <div class="fade_out_right"></div>
   </div>
+  <%= check_box_tag "task_complete_checkbox_#{list_item.id}", list_item.id, list_item.is_complete, class: "list_item_checkbox task_complete_checkbox" %>
   <a class="list_item_menu"><%= image_tag("expand_down.svg", size: "15x15") %></a>
 </div>
 
