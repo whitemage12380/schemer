@@ -1,3 +1,5 @@
+<% tasks = @task_category.tasks.order(created_at: :desc) %>
+
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Edit', edit_task_category_path(@task_category) %> |
@@ -7,6 +9,7 @@
 
 <div class="task_list">
   <%= render partial: "tasks/new_list_item" %>
-  <%= render partial: "tasks/list_item", collection: @task_category.tasks %>
+  <%= render partial: "tasks/list_item", collection: tasks.select { |task| !task.is_complete} %>
+  <%= render partial: "tasks/list_item", collection: tasks.select { |task| task.is_complete} %>
 </div>
 <div class="clear"></div>

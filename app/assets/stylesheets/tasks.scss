@@ -14,10 +14,17 @@
     height: 1.7em;
     margin: 0.2em 0;
     padding: 0.1em 0;
-    background-color: #CAF3D8;
-    box-shadow: 1px 1px rgb(100, 160, 70);
-    display: flex;
-    justify-content: space-between;
+
+    .list_item_box {
+      float: left;
+      width: calc(100% - 34px);
+      height: 100%;
+      background-color: #CAF3D8;
+      box-shadow: 1px 1px rgb(100, 160, 70);
+      display: flex;
+      justify-content: space-between;
+
+    }
 
     .list_item_tag {
         width: 40px;
@@ -38,6 +45,7 @@
         line-height: 1.5em;
         overflow: hidden;
         white-space: nowrap;
+        min-width: 0;
     }
     .list_item_menu {
         width: 20px;
@@ -45,26 +53,58 @@
         text-align: center;
 
     }
+    .add_sub_item_button {
+        opacity: 0;
+        float: right;
+        height: 100%;
+        width: 30px;
+        margin-left: 4px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
 }
 
 .new_list_item {
-  background-color: #EEEEEE;
-  border: 1px solid #808080;
-  color: #999999;
-  text-align: center;
-  
+  float: left;
+  width: 100%;
+
+  .new_list_item_box {
+    width: calc(100% - 34px);
+    background-color: #EEEEEE;
+    border: 1px solid #808080;
+    color: #999999;
+    text-align: center;
+  }
+ /* 
   .new_item_name_overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
+/*
+/*
     input#new_item_name {
       width: 100%;
       height: 75%;
     }
+  }
+*/
+}
 
+.item_name_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  input {
+    width: 100%;
+    height: 75%; 
   }
 }
 
@@ -79,6 +119,6 @@
     right: 0;
     top: 0;
     width: 2em;
-    height: calc(100% - 1px);
+    height: calc(100% - 2px);
     background-image: linear-gradient(to right, rgba(202, 243, 216, 0), rgba(202, 243, 216, 1));
 }

@@ -1,9 +1,11 @@
 <div class="list_item new_list_item">
-  <div class="list_item_name new_item_label">
-    NEW TASK
-    <div class="new_item_name_overlay hidden">
-      <%= text_field_tag "new item name", nil, placeholder: "New Task..." %>
+  <div class="list_item_box new_list_item_box">
+    <div class="list_item_name new_item_label">
+      NEW TASK
+      <div class="item_name_overlay new_item_name_overlay hidden">
+        <%= text_field_tag "new item name", nil, placeholder: "New Task..." %>
+      </div>
     </div>
+    <div class="list_item_menu new_item_menu"><%= image_tag("advanced.svg", size: "15x15") %></div>
   </div>
-  <div class="list_item_menu new_item_menu"><%= image_tag("advanced.svg", size: "15x15") %></div>
 </div>
