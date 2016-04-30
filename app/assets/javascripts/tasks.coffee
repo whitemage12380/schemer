@@ -17,7 +17,34 @@ create_task = (task_name) ->
       add_task_to_list(data.id)
       return true
     error: (data) ->
-      alert ("something didn't work")
+      alert "something didn't work"
+      return false
+
+delete_task = (task_id, task_elem) ->
+  $.ajax
+    type: "DELETE",
+    url: "/tasks/#{task_id}",
+    dataType: "json",
+    success: (data) ->
+      task_elem.remove()
+      return true
+    error: (data) ->
+      alert "something didn't work"
+      return false
+
+rename_task = (task_id, new_task_name, task_elem) ->
+  $.ajax
+    type: "PATCH",
+    url: "/tasks/#{task_id}",
+    dataType: "json",
+    data: {task: {  
+      name:            new_task_name, 
+      }},
+    success: (data) ->
+      rename_task_in_list(new_task_name, task_elem)
+      return true
+    error: (data) ->
+      alert "something didn't work"
       return false
 
 add_task_to_list = (task_id) ->
@@ -33,6 +60,10 @@ add_task_to_list = (task_id) ->
     error: (data) ->
       alert "it no worky"
       return false
+
+rename_task_in_list = (new_task_name, task_elem) ->
+  # TODO: I have to refactor to have the task name in its own element. Otherwise this is getting too convoluted.
+  #task_elem.children(".list_item_name").first().text(new_task_name)
 
 mark_task_completion = (completion_state, task_id, list_item_elem = null) ->
   $.ajax
@@ -55,11 +86,15 @@ mark_task_completion = (completion_state, task_id, list_item_elem = null) ->
 
 $ ->
   new_item_name = $(".new_item_name_overlay")
-  # When clicking outside the new task text, hide the overlay
+  # When clicking outside overlay text, hide the overlay
   $("body").mouseup (e) ->
+    # New item overlay
     if not (new_item_name.is(e.target)) and new_item_name.has(e.target).length == 0
       new_item_name.hide()
-      $(".edit_item_name_overlay").hide()
+    # Edit item overlay
+    edit_item_names = $(".edit_item_name_overlay")
+    if not (edit_item_names.is(e.target)) and edit_item_names.has(e.target).length == 0
+      edit_item_names.hide()
   # When clicking on the NEW TASK area, show the new item text input overlay
   $(".new_item_label").click ->
     new_item_name.show()
@@ -68,13 +103,26 @@ $ ->
   $(".existing_item_name").dblclick ->
     overlay = $(this).children(".edit_item_name_overlay")
     input = overlay.children("input").first()
-    input.val("TODO: Name should be copied here")
+    input.val($(this).text().trim())
     overlay.show()
     input.focus()
   # When pressing Enter inside the new task text input, create the new task in the database
   $("#new_item_name").keyup (e) ->
     if e.keyCode == 13
       create_task($(this).val())
+  # When pressing Enter inside the edit task text input, rename the task in the database, or delete the task if no text is there
+  $(".edit_item_name").keyup (e) ->
+    if e.keyCode == 13
+      list_item = $(this).closest(".list_item")
+      new_name = $(this).val().trim()
+      current_name = $(this).closest(".existing_item_name").text().trim()
+      switch new_name
+        when current_name then $(".edit_item_name_overlay").hide()
+        when "" then delete_task(list_item.children(".item_id").val(), list_item)
+        else rename_task(list_item.children(".item_id").val(), $(this).val(), list_item)
+      $(this).hide()
+
+
   # When checking or unchecking the checkbox, persist completion status and change the task list item visuals
   $(".task_complete_checkbox").change ->
     task_id = $(this).val()
