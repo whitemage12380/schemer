@@ -100,18 +100,19 @@ $ ->
     new_item_name.show()
     $("#new_item_name").focus()
   # When double-clicking an existing task's name, show the edit item text input overlay
-  $(".existing_item_name").dblclick ->
+  $(".task_list").on dblclick: ->
     overlay = $(this).children(".edit_item_name_overlay")
     input = overlay.children("input").first()
     input.val($(this).text().trim())
     overlay.show()
     input.focus()
+  , ".existing_item_name"
   # When pressing Enter inside the new task text input, create the new task in the database
   $("#new_item_name").keyup (e) ->
     if e.keyCode == 13
       create_task($(this).val())
   # When pressing Enter inside the edit task text input, rename the task in the database, or delete the task if no text is there
-  $(".edit_item_name").keyup (e) ->
+  $(".task_list").on keyup: (e) ->
     if e.keyCode == 13
       list_item = $(this).closest(".list_item")
       new_name = $(this).val().trim()
@@ -121,8 +122,7 @@ $ ->
         when "" then delete_task(list_item.children(".item_id").val(), list_item)
         else rename_task(list_item.children(".item_id").val(), $(this).val(), list_item)
       $(this).hide()
-
-
+  , ".edit_item_name"
   # When checking or unchecking the checkbox, persist completion status and change the task list item visuals
   $(".task_complete_checkbox").change ->
     task_id = $(this).val()
