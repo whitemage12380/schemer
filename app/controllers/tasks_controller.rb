@@ -73,6 +73,17 @@ class TasksController < ApplicationController
      }
   end
 
+  def task_detail_pane
+    @task = Task.find(params[:id].to_i)
+    render json: {
+     content: render_to_string({
+         partial: 'detail_pane',
+         locals: {task: @task},
+         layout: nil
+       })
+     }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task

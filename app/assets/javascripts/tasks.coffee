@@ -47,6 +47,19 @@ rename_task = (task_id, new_task_name, task_elem) ->
       alert "something didn't work"
       return false
 
+show_task_detail = (task_id, task_elem) ->
+  $.ajax
+    type: "GET",
+    url: "/task_detail_pane/" + task_id,
+    dataType: "json",
+    success: (data) ->
+      # TODO: Add some visual cue in task list elem
+      populate_task_detail_pane(data)
+      return true
+    error: (data) ->
+      alert "it no worky"
+      return false
+
 add_task_to_list = (task_id) ->
   $.ajax
     type: "GET",
@@ -82,6 +95,10 @@ mark_task_completion = (completion_state, task_id, list_item_elem = null) ->
     error: (data) ->
       alert data
       return false
+
+populate_task_detail_pane = (task_data) ->
+  pane = $("#task_detail_sidebar")
+  pane.html(task_data.content)
 
 $ ->
   new_item_name = $(".new_item_name_overlay")
@@ -140,6 +157,13 @@ $ ->
     button.stop()
     button.animate({opacity: 0}, {duration: (400 * current_opacity), queue: false })
   , ".task_list_item"
+  # When clicking on the menu button for a list item, reveal verbose task information on the right side-pane
+  # TODO: I need to add disambiguating names for all the task interfaces
+  $(".task_list").on click: ->
+    list_item = $(this).closest(".list_item")
+    task_id = list_item.children(".item_id").val()
+    show_task_detail(task_id, list_item)
+  , ".list_item_menu"
   # When clicking on the "+" new subtask button, create a NEW TASK subtask element if one doesn't already exist
   $(".task_list").on click: ->
     #$(this).parent(".task_list_item")

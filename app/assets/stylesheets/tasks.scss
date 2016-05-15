@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#task_list_options {
+.list_options_sidebar {
   float: left;
   width: 20%;
 }
@@ -12,9 +12,17 @@
   width: 50%;
 }
 
-#task_detail_sidebar {
+.item_detail_sidebar {
   float: left;
   width: 30%;
+  
+  .detail_item_name {
+    border: 1px solid purple;
+    padding: 0.5em;
+    text-align: center;
+    font-family: "Ubuntu";
+    // font-size: 12pt; 
+  }
 }
 
 .list_item {

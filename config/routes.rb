@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'task_list_item/:id', to: 'tasks#task_list_item'
+  get 'task_detail_pane/:id', to: 'tasks#task_detail_pane'
 
   resources :tasks
   resources :task_categories
