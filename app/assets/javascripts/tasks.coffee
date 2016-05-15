@@ -62,8 +62,7 @@ add_task_to_list = (task_id) ->
       return false
 
 rename_task_in_list = (new_task_name, task_elem) ->
-  # TODO: I have to refactor to have the task name in its own element. Otherwise this is getting too convoluted.
-  #task_elem.children(".list_item_name").first().text(new_task_name)
+  task_elem.find(".list_item_name_text").first().text(new_task_name)
 
 mark_task_completion = (completion_state, task_id, list_item_elem = null) ->
   $.ajax
@@ -121,7 +120,7 @@ $ ->
         when current_name then $(".edit_item_name_overlay").hide()
         when "" then delete_task(list_item.children(".item_id").val(), list_item)
         else rename_task(list_item.children(".item_id").val(), $(this).val(), list_item)
-      $(this).hide()
+      $(this).parent(".edit_item_name_overlay").hide()
   , ".edit_item_name"
   # When checking or unchecking the checkbox, persist completion status and change the task list item visuals
   $(".task_complete_checkbox").change ->
