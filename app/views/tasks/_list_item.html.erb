@@ -3,7 +3,7 @@
   <div class="list_item_box">
     <div class="list_item_tag" style="background-color: <%= list_item.task_category.color %>;">|||</div>
     <div class="list_item_name existing_item_name">
-      <%= list_item.name %>
+      <span class="list_item_name_text existing_item_name_text"><%= list_item.name %></span>
       <div class="fade_out_right"></div>
       <div class="item_name_overlay edit_item_name_overlay hidden">
         <%= text_field_tag "edit item #{list_item.id} name", nil, class: "edit_item_name", placeholder: "Delete task if no name is present" %>

@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#task_list_options {
+  float: left;
+  width: 20%;
+}
+
 .task_list {
-  margin-left: 20%;
-  width: 60%;
-  min-width: 40em;
+  float: left;
+  width: 50%;
+}
+
+#task_detail_sidebar {
+  float: left;
+  width: 30%;
 }
 
 .list_item {

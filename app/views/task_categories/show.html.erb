@@ -7,9 +7,17 @@
 
 <%= hidden_field :task_category, :id %>
 
-<div class="task_list">
+<div class="clear"></div>
+
+<div id="task_list_options" class="task_list_options">
+  These are options!
+</div>
+<div id="task_list" class="task_list">
   <%= render partial: "tasks/new_list_item" %>
   <%= render partial: "tasks/list_item", collection: tasks.select { |task| !task.is_complete} %>
   <%= render partial: "tasks/list_item", collection: tasks.select { |task| task.is_complete} %>
+</div>
+<div id="task_detail_sidebar" class="task_detail_sidebar">
+  This is a task
 </div>
 <div class="clear"></div>
