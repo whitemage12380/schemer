@@ -1,2 +1,12 @@
 <%= hidden_field_tag "task_id_#{task.id}", task.id, class: "item_id" %>
-<h3 class="detail_item_name"><%= task.name %></div>
+<h5 class="detail_item_category_name"><%= task.task_category.name %></h5>
+<h3 class="detail_item_name"><%= task.name %></h3>
+<div class="detail_item_progress_section">
+  <div class="progress_section_bar"></div>
+  <div class="progress_section_complete"></div>
+</div>
+<p class="detail_item_description"><%= task.description %></p>
+<div class="detail_item_audit">
+  Last updated at <%= task.updated_at.strftime("%l:%M %B %e, %Y") %><br />
+  Created at <%= task.created_at.strftime("%l:%M %B %e, %Y") %>
+</div>

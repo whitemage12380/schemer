@@ -16,12 +16,25 @@
   float: left;
   width: 30%;
   
+  .detail_item_category_name {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: "Ubuntu";
+  }
   .detail_item_name {
     border: 1px solid purple;
     padding: 0.5em;
+    margin-top: 0.1em;
     text-align: center;
     font-family: "Ubuntu";
     // font-size: 12pt; 
+  }
+  .detail_item_audit {
+    color: gray;
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: right;
   }
 }
 
