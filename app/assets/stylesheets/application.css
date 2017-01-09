@@ -13,4 +13,5 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui/tooltip
+ *= require jquery-ui/progressbar
  */

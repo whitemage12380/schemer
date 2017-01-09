@@ -2,8 +2,14 @@
 <h5 class="detail_item_category_name"><%= task.task_category.name %></h5>
 <h3 class="detail_item_name"><%= task.name %></h3>
 <div class="detail_item_progress_section">
-  <div class="progress_section_bar"></div>
-  <div class="progress_section_complete"></div>
+
+  <div class="progress_section_bar">
+    <progress class="task_progress" max="100" value="<%= task.progress_percent %>"></progress>
+  </div>
+  <div class="progress_section_complete">
+    <%= check_box_tag "task_detail_complete_checkbox_#{task.id}", task.id, task.is_complete, class: "detail_checkbox task_complete_checkbox" %>
+  </div>
+  <div class="clear"></div>
 </div>
 <p class="detail_item_description"><%= task.description %></p>
 <div class="detail_item_audit">

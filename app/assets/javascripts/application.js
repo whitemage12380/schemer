@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/tooltip
+//= require jquery-ui/progressbar
 //= require turbolinks
 //= require jquery.turbolinks
 //= require tooltip

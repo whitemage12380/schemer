@@ -1,4 +1,4 @@
-<div class="list_item task_list_item existing_list_item<% if list_item.is_complete %> completed_task<% end %>">
+<div id="task_list_item_<%= list_item.id %>" class="list_item task_list_item existing_list_item<% if list_item.is_complete %> completed_task<% end %> value="<%= list_item.id %>">
   <%= hidden_field_tag "task_id_#{list_item.id}", list_item.id, class: "item_id" %>
   <div class="list_item_box">
     <div class="list_item_tag" style="background-color: <%= list_item.task_category.color %>;">|||</div>
